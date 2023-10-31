@@ -84,7 +84,6 @@ const recommendedLocations = [
     days: 12,
   },
 ];
-
 recommendedLocations.forEach((card) => {
   const { img, location, date, days, stars } = card;
 
@@ -95,11 +94,11 @@ recommendedLocations.forEach((card) => {
 <div class="desc">
   <div class="name">${location}</div>
   <div class="time">
-    <span class="material-symbols-outlined">today</span>
-    <span>${date}</span>
+  <span class="material-symbols-outlined">calendar_today</span>
+  <span>${date}</span>
   </div>
   <div class="duration">
-    <span class="material-symbols-outlined">watch</span>
+    <span class="material-symbols-outlined">schedule</span>
     ${days} <small>روز</small>
   </div>
 </div>

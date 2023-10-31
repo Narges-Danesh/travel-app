@@ -1,6 +1,5 @@
 :root {
   --main-color: #5f3ac5;
-  --main-color-2: #1164ac;
   --bg-color: #1b2024;
   --bg-color-darker: #121517;
   --bg-color-2: #31373e;
@@ -125,10 +124,9 @@ nav {
   margin-top: 20px;
   overflow-x: scroll;
   scrollbar-width: none;
-  
 }
 #location-tags::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 #location-tags .tag {
   padding: 5px 10px;
@@ -156,7 +154,7 @@ main {
   overflow-x: scroll;
 }
 #popular-places::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 #popular-places .popular-card {
   min-width: 40%;
@@ -197,6 +195,7 @@ main {
 #recommended {
   display: flex;
   flex-flow: column;
+  margin-bottom: 300px;
 }
 #recommended .recommended-card {
   width: 100%;
@@ -241,7 +240,23 @@ main {
   margin-right: 5px;
   font-size: inherit;
 }
-/* ================= FOOTER ================= */
-footer {
-  height: 50vh;
+/* ================= BOTTOM NAV ================= */
+#bottom-nav-container {
+  position: fixed;
+  width: 100%;
+  top: 60%;
+  z-index: 1000;
+}
+#bottom-nav-container .bottom-nav {
+  background-color: var(--bg-color-darker);
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  border-radius: 20px;
+  margin: 13px;
+  border: 1px solid rgb(66, 66, 66);
+}
+#bottom-nav-container .bottom-nav span {
+  transform: scale(130%);
+  color: var(--main-color);
 }
