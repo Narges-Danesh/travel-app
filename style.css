@@ -2,6 +2,7 @@
   --main-color: #5f3ac5;
   --main-color-2: #1164ac;
   --bg-color: #1b2024;
+  --bg-color-darker: #121517;
   --bg-color-2: #31373e;
   --text-color: #f1f3f5;
 }
@@ -18,23 +19,47 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  outline: none;
   font-family: iran-sans, sans-serif;
+  direction: rtl;
 }
 .material-symbols-outlined {
   font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
 }
+html {
+  font-size: 14px;
+}
 body {
-    background-color: var(--bg-color);
+  background-color: var(--bg-color);
 }
 #container {
   color: var(--text-color);
-  margin: 10px 20px;
+}
+input {
+  border: none;
+}
+button {
+    cursor: pointer;
+}
+a {
+    text-decoration: none;
+    color: inherit;
 }
 /* ================= NAVIGATION ================= */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 #navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--bg-color);
+  padding: 10px 20px;
+}
+#navbar.shadow {
+  box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
 }
 #user-profile {
   height: 10vh;
@@ -48,21 +73,70 @@ body {
   border-radius: 50%;
 }
 #profile-pic img {
-  height: 190%;
+  height: 210%;
   width: 50px;
   object-fit: cover;
+  object-position: 50% -6px;
+}
+#user-type {
+  font-size: 0.8rem;
+  color: grey;
 }
 #current-location {
-    display: flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
+  font-size: 0.9rem;
+  border: 1px solid grey;
+  padding: 5px 8px;
+  border-radius: 3px;
+}
+.location-icon {
+  font-variation-settings: "FILL" 1, "wght" 10, "GRAD" 0, "opsz" 24;
 }
 /* ================= HEADER ================= */
 #header {
   height: 90vh;
+  margin: 10px 20px;
+}
+/* SEARCH SECTION */
+#search-section {
+  width: 100%;
+  position: relative;
+  margin-top: 15px;
+}
+#search-section-input {
+  width: 100%;
+  background-color: var(--bg-color-darker);
+  border-radius: 6px;
+  padding: 10px;
+  padding-right: 40px;
+}
+#search-section .search-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}
+#location-tags {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+    overflow-x: scroll;
+    scrollbar-width: 0;
+}
+#location-tags .tag {
+    padding: 5px 10px;
+    border-radius: 3px;
+    border: 1px solid var(--main-color);
+    font-size: .8rem;
+} 
+#location-tags .tag.active {
+    background-color: var(--main-color);
 }
 /* ================= MAIN ================= */
 main {
   height: 150vh;
+  padding: 10px 20px;
 }
 /* ================= FOOTER ================= */
