@@ -96,7 +96,6 @@ nav {
 }
 /* ================= HEADER ================= */
 #header {
-  height: 90vh;
   margin: 10px 20px;
 }
 /* SEARCH SECTION */
@@ -111,6 +110,7 @@ nav {
   border-radius: 6px;
   padding: 10px;
   padding-right: 40px;
+  color: var(--text-color);
 }
 #search-section .search-icon {
   position: absolute;
@@ -118,6 +118,7 @@ nav {
   right: 10px;
   transform: translateY(-50%);
 }
+/* ======== LOCATION TAGS ========= */
 #location-tags {
     display: flex;
     gap: 8px;
@@ -134,9 +135,54 @@ nav {
 #location-tags .tag.active {
     background-color: var(--main-color);
 }
+
 /* ================= MAIN ================= */
 main {
-  height: 150vh;
   padding: 10px 20px;
 }
+/* ======== POPULAR SECTION ========= */
+.section-title {
+    font-size: 1.2rem;  
+    letter-spacing: 2px;
+}
+#popular-places {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+    overflow-x: scroll;
+}
+#popular-places .popular-card {
+    min-width: 40%;
+    height: 170px;
+    border-radius: 10px;
+    position: relative;
+    background-blend-mode: darken;
+    background-size: cover;
+    background-position: 60% 0;
+}
+.card-location-name {
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+}
+#popular-places .stars {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    border-radius: 5px;
+}
+#popular-places .stars span:first-child {
+    padding-right: 8px;
+}
+.star-icon {
+  color: yellow;
+    transform: scale(60%);
+}
+
 /* ================= FOOTER ================= */

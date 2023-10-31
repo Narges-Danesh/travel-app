@@ -12,37 +12,45 @@
   </head>
   <body>
     <div id="container">
-        <nav>
-            <div id="navbar">
-              <div id="user-profile">
-                <div id="profile-pic">
-                  <img src="images/profile-pic.jpg" alt="" />
-                </div>
-                <div>
-                  <span id="user-type">کاربر جدید</span>
-                  <div class="user-name"> مبینا رحیمی</div>
-                </div>
-              </div>
-              <div id="current-location">
-                <span>اهواز</span>
-                <span class="material-symbols-outlined location-icon">
-                  location_on
-                </span>
-              </div>
+      <!-- ======================= NAVIGATION ================ -->
+      <nav>
+        <div id="navbar">
+          <div id="user-profile">
+            <div id="profile-pic">
+              <img src="images/profile-pic.jpg" alt="" />
             </div>
-          </nav>
-          <header id="header">
-            <div id="search-section">
-                <input type="text" id="search-section-input" placeholder=" جست‌وجو ">
-                <span class="material-symbols-outlined search-icon">
-                    search
-                  </span>
-
+            <div>
+              <span id="user-type">کاربر جدید</span>
+              <div class="user-name">مبینا رحیمی</div>
             </div>
-            <div id="location-tags">
-            </div>
-          </header>
-      <main></main>
+          </div>
+          <div id="current-location">
+            <span>اهواز</span>
+            <span class="material-symbols-outlined location-icon">
+              location_on
+            </span>
+          </div>
+        </div>
+      </nav>
+      <header id="header">
+        <!-- ======================= SEARCH SECTION ================ -->
+        <div id="search-section">
+          <input
+            type="text"
+            id="search-section-input"
+            placeholder=" جست‌وجو "
+          />
+          <span class="material-symbols-outlined search-icon"> search </span>
+        </div>
+        <!-- ======================= LOCATION TAGS ================ -->
+        <div id="location-tags"></div>
+      </header>
+      <main>
+        <!-- ======================= POPULAR SECTION ================ -->
+        <h1 class="section-title">مکان‌های پرطرفدار</h1>
+        <div id="popular-places"></div>
+        <!-- =======================    RECOMMENDED SECTION ================ -->
+      </main>
       <footer id="footer"></footer>
     </div>
     <script src="main.js"></script>
