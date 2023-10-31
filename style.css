@@ -39,11 +39,11 @@ input {
   border: none;
 }
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 /* ================= NAVIGATION ================= */
 nav {
@@ -120,20 +120,24 @@ nav {
 }
 /* ======== LOCATION TAGS ========= */
 #location-tags {
-    display: flex;
-    gap: 8px;
-    margin-top: 20px;
-    overflow-x: scroll;
-    scrollbar-width: 0;
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+  overflow-x: scroll;
+  scrollbar-width: none;
+  
+}
+#location-tags::-webkit-scrollbar {
+    display: none;
 }
 #location-tags .tag {
-    padding: 5px 10px;
-    border-radius: 3px;
-    border: 1px solid var(--main-color);
-    font-size: .8rem;
-} 
+  padding: 5px 10px;
+  border-radius: 3px;
+  border: 1px solid var(--main-color);
+  font-size: 0.8rem;
+}
 #location-tags .tag.active {
-    background-color: var(--main-color);
+  background-color: var(--main-color);
 }
 
 /* ================= MAIN ================= */
@@ -142,47 +146,102 @@ main {
 }
 /* ======== POPULAR SECTION ========= */
 .section-title {
-    font-size: 1.2rem;  
-    letter-spacing: 2px;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
 }
 #popular-places {
-    display: flex;
-    gap: 10px;
-    margin: 20px 0;
-    overflow-x: scroll;
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  overflow-x: scroll;
+}
+#popular-places::-webkit-scrollbar {
+    display: none;
 }
 #popular-places .popular-card {
-    min-width: 40%;
-    height: 170px;
-    border-radius: 10px;
-    position: relative;
-    background-blend-mode: darken;
-    background-size: cover;
-    background-position: 60% 0;
+  min-width: 40%;
+  height: 170px;
+  border-radius: 10px;
+  position: relative;
+  background-blend-mode: darken;
+  background-size: cover;
+  background-position: 60% 0;
 }
 .card-location-name {
-    position: absolute;
-    bottom: 15px;
-    right: 10px;
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
 }
 #popular-places .stars {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    background-color: rgba(0, 0, 0, 0.5);
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 25px;
-    border-radius: 5px;
+  position: absolute;
+  top: 5px;
+  left: 5px;
 }
-#popular-places .stars span:first-child {
-    padding-right: 8px;
+.stars {
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  border-radius: 5px;
+}
+.stars span:first-child {
+  padding-right: 8px;
 }
 .star-icon {
   color: yellow;
-    transform: scale(60%);
+  transform: scale(60%);
 }
-
+/* ======== RECOMMENDED SECTION ========= */
+#recommended {
+  display: flex;
+  flex-flow: column;
+}
+#recommended .recommended-card {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: var(--bg-color-darker);
+  margin-top: 15px;
+  display: flex;
+  position: relative;
+  height: 110px;
+}
+#recommended .location-cover {
+  border-radius: inherit;
+  width: 90px;
+  height: 100%;
+  overflow: hidden;
+  background-size: 250%;
+  background-position: 40% -10px;
+}
+#recommended .stars {
+  position: absolute;
+  left: 10px;
+}
+.recommended-card .desc {
+  margin-right: 15px;
+  font-size: 0.8rem;
+}
+.recommended-card .desc .name {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+.recommended-card .desc > div {
+  display: flex;
+  align-items: center;
+}
+.recommended-card .desc .material-symbols-outlined {
+  transform: scale(60%);
+  color: grey;
+}
+.recommended-card .desc .duration small {
+  color: grey;
+  margin-right: 5px;
+  font-size: inherit;
+}
 /* ================= FOOTER ================= */
+footer {
+  height: 50vh;
+}
