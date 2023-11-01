@@ -5,6 +5,8 @@ const recommendedSection = document.getElementById("recommended");
 const sectionContainer = document.getElementById("section-container");
 const sectionElement = document.querySelector("section");
 
+const urlParams = new URLSearchParams(window.location.search);
+const paramLocation = urlParams.get("location");
 // ===================== NAV SCROLL EFFECT ==================
 addEventListener("scroll", () => {
   if (window.scrollY > 0) {
@@ -192,8 +194,7 @@ recommendedLocations.forEach((card) => {
     `;
 });
 // ===================== DETAILS PAGE ===================
-// const urlParams = new URLSearchParams(window.location.search);
-// const paramLocation = urlParams.get("location");
+
 let dataLocation = "";
 
 const allDataAttributes = document.querySelectorAll("[data-location]");
@@ -232,7 +233,24 @@ allDataAttributes.forEach((data) => {
     backBtn.addEventListener("click", () => {
       sectionContainer.style.transform = `translateX(100%)`;
     });
-  });
+      // ===================== IMGs ===================
+    const imageElemnts = document.querySelectorAll('.images img')
+    const bigCover = document.querySelector('.big-cover img')
+    function removeActive() {
+        imageElemnts.forEach(img => {
+            img.classList.remove('active')
+        })
+    }
+    imageElemnts.forEach(img => {
+        img.addEventListener('click', () => {
+            bigCover.src = img.src
+            removeActive()
+            img.classList.add('active')
+        })
+    })
+
+})
+
 });
 
 function addToDomDetails(place) {
@@ -284,4 +302,44 @@ function addToDomDetails(place) {
     <button class="book-now-btn">رزرو کن</button>
   </div>
   `;
+
 }
+
+let isDragging = false,
+startX,
+startScrollLeft;
+
+const dragStart = (e) => {
+    isDragging = true;
+    startX = e.pageX;
+    startScrollLeft = popularSection.scrollLeft;
+    popularSection.classList.add("dragging");
+  };
+  const dragging = (e) => {
+    if (!isDragging) return;
+    popularSection.scrollLeft = startScrollLeft - (e.pageX - startX);
+  };
+  const dragStop = () => {
+    setTimeout(() => {
+        isDragging = false;
+    popularSection.classList.remove("dragging");
+    }, 100);
+  };
+
+popularSection.addEventListener('mousedown', dragStart)
+popularSection.addEventListener('mouseup', dragStop)
+popularSection.addEventListener('mousemove', dragging)
+
+const sliderImages = popularSection.querySelectorAll('.popular-card')
+// sliderImages.forEach((image) => {
+//     image.addEventListener('click', (e) => {
+//         if (isDragging) {
+//             e.preventDefault(); 
+//     sectionContainer.style.transform = `translateX(100%)`;
+
+//         } else {
+//     sectionContainer.style.transform = `translateX(0)`;
+
+//         }
+//     });
+// });

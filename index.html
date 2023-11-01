@@ -14,6 +14,42 @@
   <body>
     <div id="container">
       <!-- ======================= NAVIGATION ================ -->
+      <!-- big screens -->
+      <div id="nav-big-screen">
+        <div class="profile-and-location">
+          <div id="user-profile">
+            <div id="profile-pic">
+              <img src="images/profile-pic.jpg" alt="" />
+            </div>
+            <div>
+              <span id="user-type">کاربر جدید</span>
+              <div class="user-name">مبینا رحیمی</div>
+            </div>
+          </div>
+          <div id="current-location-desktop">
+            <span>اهواز</span>
+            <span class="material-symbols-outlined location-icon">
+              location_on
+            </span>
+          </div>
+        </div>
+        <div id="search-section-desktop" class="search-section">
+          <input
+            type="text"
+            class="search-section-input"
+            placeholder=" جست‌وجو "
+          />
+          <span class="material-symbols-outlined search-icon"> search </span>
+        </div>
+
+        <div class="icons">
+          <span class="material-symbols-outlined"> person</span>
+          <span class="material-symbols-outlined"> bookmarks </span>
+          <span class="material-symbols-outlined"> home </span>
+        </div>
+      </div>
+
+      <!-- mobile -->
       <nav>
         <div id="navbar">
           <div id="user-profile">
@@ -42,10 +78,10 @@
       </div>
       <header id="header">
         <!-- ======================= SEARCH SECTION ================ -->
-        <div id="search-section">
+        <div id="search-section-mobile" class="search-section">
           <input
             type="text"
-            id="search-section-input"
+            class="search-section-input"
             placeholder=" جست‌وجو "
           />
           <span class="material-symbols-outlined search-icon"> search </span>
@@ -62,13 +98,11 @@
         <div id="recommended"></div>
       </main>
       <!-- =======================    DETAILS SECTION ================ -->
-      <div id="section-container">
-        <section id="details-section">
-   
-        </section>
-      </div>
+    
     </div>
-
+  <div id="section-container">
+        <section id="details-section"></section>
+      </div>
     <script src="main.js"></script>
     <script src="homePage.js"></script>
     <script src="details.js"></script>
