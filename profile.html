@@ -14,19 +14,21 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
     <title>تورهای گردشگری</title>
+
+    <style>
+       
+      </style>
   </head>
   <body>
     <div id="container">
       <div id="bottom-nav-container">
         <div class="bottom-nav">
-          <a href="profile.html">
-            <span class="material-symbols-outlined"> person</span></a
-          >
+          <a href="profile.html"> <span class="material-symbols-outlined active"> person</span></a>
           <a href="bookmarks.html">
             <span class="material-symbols-outlined"> bookmarks </span></a
           >
           <a href="index.html">
-            <span class="material-symbols-outlined active"> home </span></a
+            <span class="material-symbols-outlined "> home </span></a
           >
         </div>
       </div>
@@ -50,27 +52,17 @@
             </span>
           </div>
         </div>
-        <div id="search-section-desktop" class="search-section">
-          <form action="">
-            <input
-              type="text"
-              id="search-section-input"
-              class="search-section-input"
-              placeholder=" جست‌وجو "
-            />
-          </form>
-          <span class="material-symbols-outlined search-icon"> search </span>
-        </div>
+       
 
         <div class="icons">
-            <a href="profile.html">
-                <span class="material-symbols-outlined"> person</span></a
+          <a href="profile.html">
+            <span class="material-symbols-outlined active"> person</span></a
           >
           <a href="bookmarks.html">
             <span class="material-symbols-outlined"> bookmarks </span></a
           >
           <a href="index.html">
-            <span class="material-symbols-outlined active"> home </span></a
+            <span class="material-symbols-outlined "> home </span></a
           >
         </div>
       </div>
@@ -102,37 +94,27 @@
         </div>
       </nav>
 
-      <header id="header">
-        <!-- ======================= SEARCH SECTION ================ -->
-        <div id="search-section-mobile" class="search-section">
-          <form action="">
-            <input
-              type="text"
-              id="search-section-input-mobile"
-              class="search-section-input"
-              placeholder=" جست‌وجو "
-            />
-          </form>
-          <span class="material-symbols-outlined search-icon"> search </span>
-        </div>
-        <!-- ======================= LOCATION TAGS ================ -->
-        <div id="location-tags"></div>
-      </header>
-      <main>
-        <!-- ======================= POPULAR SECTION ================ -->
-        <h1 class="section-title">مکان‌های پرطرفدار</h1>
-        <div id="popular-places"></div>
-        <!-- =======================    RECOMMENDED SECTION ================ -->
-        <h1 class="section-title">پیشنهادی</h1>
-        <div id="recommended"></div>
-      </main>
-      <!-- =======================    DETAILS SECTION ================ -->
-    </div>
-    <div id="section-container">
-      <section id="details-section"></section>
-    </div>
-
-    <script src="main.js"></script>
-    <script src="homePage.js"></script>
+      <!-- ========== PROFILE ========= -->
+       <div id="profile-container">
+        <table>
+        <tr class="user-name">
+            <td>نام و نام خانوادگی</td>
+            <td>مبینا رحیمی</td>
+        </tr>
+        <tr class="date-added">
+            <td>تاریخ عضویت</td>
+            <td>1402.08.08</td>
+        </tr>
+        <tr class="places-been">
+            <td>تورهایی که شرکت کرده‌اید</td>
+            <td>ژاپن، مراکش</td>
+        </tr>
+    </table>
+        <button>خروج از حساب</button>
+       </div>
+       
+</div>
+        <script src="main.js"></script>
+    <script></script>
   </body>
 </html>

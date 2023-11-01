@@ -4,11 +4,14 @@
   --bg-color-darker: #121517;
   --bg-color-2: #31373e;
   --text-color: #f1f3f5;
+  --stars-bg : rgba(0, 0, 0, 0.5);
 }
 .light-mode {
   --bg-color: #f1f3f5;
   --bg-color-2: #dfe3e7;
+  --bg-color-darker: #dfe3e7;
   --text-color: #1b2024;
+  --stars-bg : rgba(143, 143, 143, 0.523);
 }
 @font-face {
   font-family: iran-sans;
@@ -42,6 +45,9 @@ a {
   text-decoration: none;
   color: inherit;
 }
+span.material-symbols-outlined {
+    cursor: pointer;
+}
 /* ================= NAVIGATION ================= */
 nav {
   position: sticky;
@@ -59,6 +65,15 @@ nav {
 #navbar.shadow {
   box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
 }
+#navbar .left-section {
+    display: flex;
+align-items: center;
+gap: 15px;
+  }
+  .dark-mode span {
+    transform: scale(120%);
+
+  }
 #user-profile {
   height: 10vh;
   display: flex;
@@ -66,13 +81,14 @@ nav {
   gap: 8px;
 }
 #profile-pic {
-  height: 100%;
+  height: 80px;
+  width: 80px;
   overflow: hidden;
   border-radius: 50%;
 }
 #profile-pic img {
   height: 210%;
-  width: 50px;
+  width: 100%;
   object-fit: cover;
   object-position: 50% -6px;
 }
@@ -140,6 +156,7 @@ nav {
 }
 #location-tags .tag:hover {
   background-color: var(--main-color);
+  color: white;
 }
 /* ================= MAIN ================= */
 main {
@@ -161,6 +178,7 @@ main {
 }
 #popular-places .popular-card {
   min-width: 40%;
+  color: #f1f3f5;
   height: 170px;
   border-radius: 10px;
   position: relative;
@@ -180,7 +198,7 @@ main {
   left: 5px;
 }
 .stars {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--stars-bg);
   font-size: 0.8rem;
   display: flex;
   align-items: center;
@@ -196,12 +214,12 @@ main {
   transform: scale(60%);
 }
 /* ======== RECOMMENDED SECTION ========= */
-#recommended {
+#recommended,  #search-cards{
   display: flex;
   flex-flow: column;
   margin-bottom: 100px;
 }
-#recommended .recommended-card {
+.recommended-card {
   width: 100%;
   padding: 10px;
   border-radius: 10px;
@@ -212,7 +230,7 @@ main {
   height: 110px;
   cursor: pointer;
 }
-#recommended .location-cover {
+.location-cover {
   border-radius: inherit;
   width: 90px;
   height: 100%;
@@ -220,7 +238,7 @@ main {
   background-size: 250%;
   background-position: 40% -10px;
 }
-#recommended .stars {
+.stars {
   position: absolute;
   left: 10px;
 }
@@ -245,24 +263,36 @@ main {
   margin-right: 5px;
   font-size: inherit;
 }
+
 /* ================= BOTTOM NAV ================= */
 #bottom-nav-container {
   position: fixed;
-  width: 100%;
-  top: 60vh;
+  bottom: 20px;
   z-index: 1002;
+left: 50%;
+transform: translateX(-50%);
 }
 #bottom-nav-container .bottom-nav {
   background-color: var(--bg-color-darker);
   display: flex;
   justify-content: space-around;
-  padding: 20px;
   border-radius: 20px;
   border: 1px solid rgb(66, 66, 66);
+  overflow: hidden;
 }
 #bottom-nav-container .bottom-nav span {
   transform: scale(130%);
-  color: var(--main-color);
+  color: grey;
+  height: 50px;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#bottom-nav-container .bottom-nav span.active {
+color: white;
+background-color: var(--main-color);
+
 }
 /* ================= DETAILS ================= */
 #section-container {
@@ -276,6 +306,9 @@ main {
   transform: translateX(100%);
   transition: all 0.3s;
 }
+#section-container::-webkit-scrollbar {
+    display: none;
+  }
 section {
   margin-bottom: 100px;
 }
@@ -310,6 +343,7 @@ section {
   padding: 5px;
   border-radius: 5px;
   border: 1px solid white;
+  color: white;
   transform: scale(110%);
   z-index: 100;
   cursor: pointer;
@@ -406,6 +440,7 @@ section {
 .book-now-btn:hover {
   background-color: transparent;
   border: 2px solid var(--main-color);
+  color: var(--text-color);
 }
 #nav-big-screen {
   display: none;
@@ -415,6 +450,42 @@ section {
   scroll-behavior: auto;
   scroll-snap-type: none;
 }
+
+
+/* ================= SEARCH PAGE ================= */
+#search-cards {
+    margin: 10px ;
+}
+/* ================= PROFILE  ================= */
+#profile-container {
+padding: 20px ;
+display: flex;
+flex-flow: column;
+align-items: center;
+}
+#profile-container table {
+    margin: 0 auto;
+}
+#profile-container table td {
+    padding: 10px 20px;
+}
+#profile-container table tr td:first-child {
+    color: grey;
+}
+#profile-container  button {
+    padding: 10px 20px;
+    border: 2px solid var(--main-color);
+    background-color: var(--main-color);
+    color: white;
+    border-radius: 5px;
+    margin-top: 30px;
+    transition:  all 0.3s;
+}
+#profile-container  button:hover {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--main-color);
+}
 /* ================= MEDIA QUERIES ================= */
 @media screen and (min-width: 800px) {
   #nav-big-screen {
@@ -423,7 +494,6 @@ section {
     align-items: center;
     margin-bottom: 50px;
   }
-
   html {
     font-size: 16px;
   }
@@ -441,6 +511,7 @@ section {
     gap: 50px;
     margin-left: 50px;
   }
+
   #user-profile {
     width: 170px;
   }
@@ -471,19 +542,17 @@ section {
   #popular-places .popular-card {
     height: 200px;
   }
-  #recommended {
+  #recommended,  #search-cards{
     display: flex;
     flex-flow: row;
     gap: 2%;
     flex-wrap: wrap;
   }
-  #recommended .recommended-card {
+ .recommended-card{
     max-width: 49%;
   }
   /* DETAILS PAGE */
-  #section-container::-webkit-scrollbar {
-    display: none;
-  }
+
   #section-container {
     padding: 0 40px;
   }

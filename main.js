@@ -5,8 +5,9 @@ const recommendedSection = document.getElementById("recommended");
 const sectionContainer = document.getElementById("section-container");
 const sectionElement = document.querySelector("section");
 
+let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+
 const urlParams = new URLSearchParams(window.location.search);
-const paramLocation = urlParams.get("location");
 // ===================== NAV SCROLL EFFECT ==================
 addEventListener("scroll", () => {
   if (window.scrollY > 0) {
@@ -15,24 +16,14 @@ addEventListener("scroll", () => {
     navbar.classList.remove("shadow");
   }
 });
-// ===================== LOCATION TAGS ===================
-const locations = ["مراکش", "نپال", "هند", "ژاپن", "گرجستان", "دبی"];
-locations.forEach((tag) => {
-  const span = document.createElement("span");
-  span.classList.add("tag");
-  const aTag = document.createElement("a");
-  //   aTag.setAttribute("href", `index.html?location=${tag}`);
-  span.innerHTML = tag;
-  span.setAttribute("data-location", `${tag}`);
-  //   span.appendChild(aTag);
-  locationTags.appendChild(span);
-});
+
 // ===================== POPULAR LOCATIONS ===================
 const popularLocations = [
   {
     img: "morocco/morocco-cover.jpg",
     location: "مراکش",
     stars: 4.6,
+    date: "10 بهمن تا 19 بهمن",
     days: 9,
     images: [
       ` <img src="images/morocco/Morocco.jpg" alt="" />
@@ -51,6 +42,7 @@ const popularLocations = [
     img: "nepal/nepal-cover.jpg",
     location: "نپال",
     stars: 4.2,
+    date: "15 دی تا 22 دی",
     days: 7,
     images: [
       `
@@ -71,6 +63,7 @@ const popularLocations = [
     img: "india/india-cover.jpg",
     location: "هند",
     stars: 4.7,
+    date: "20 اسفند تا 5 بهمن",
     days: 15,
     images: [
       `
@@ -90,20 +83,7 @@ const popularLocations = [
     price: 13,
   },
 ];
-popularLocations.forEach((card) => {
-  const { img, location, stars } = card;
 
-  popularSection.innerHTML += `
-  
-   <div class="popular-card" data-location="${location}" style='background-image: url(images/${img}), linear-gradient(180deg, transparent, black)'>
-   <div class="name">${location}</div>
-   <div class="stars">
-     <span>${stars}</span>
-     <span class="material-symbols-outlined star-icon"> star </span>
-   </div>
-   </div>
-    `;
-});
 // ===================== RECOMMENDED LOCATIONS ===================
 const recommendedLocations = [
   {
@@ -165,93 +145,59 @@ const recommendedLocations = [
     price: 25,
   },
 ];
-recommendedLocations.forEach((card) => {
-  const { img, location, date, days, stars } = card;
+const allLocations = [...popularLocations, ...recommendedLocations];
 
-  recommendedSection.innerHTML += `
-    
-    <div class="recommended-card" data-location="${location}" >
-    <div class="location-cover" style=' background-image: url(images/${img});'>
-    </div>
-    <div class="desc">
-      <div class="name">${location}</div>
-      <div class="time">
-      <span class="material-symbols-outlined">calendar_today</span>
-      <span>${date}</span>
-      </div>
-      <div class="duration">
-        <span class="material-symbols-outlined">schedule</span>
-        ${days} <small>روز</small>
-      </div>
-    </div>
-    <div class="stars">
-      <span>${stars}</span>
-      <span class="material-symbols-outlined star-icon"> star </span>
-    </div>
-    </div>
+// ===================== DARK MODE ===================
+const darkModeBtn = document.querySelector("#navbar   .dark-mode span");
 
-  
-    `;
+darkModeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+  if (document.body.classList.contains("light-mode")) {
+    darkModeBtn.innerHTML = "light_mode";
+  } else {
+    darkModeBtn.innerHTML = "clear_night";
+  }
 });
-// ===================== DETAILS PAGE ===================
 
-let dataLocation = "";
-
-const allDataAttributes = document.querySelectorAll("[data-location]");
-allDataAttributes.forEach((data) => {
-  data.addEventListener("click", () => {
-    sectionContainer.style.transform = `translateX(0)`;
-    if (data.children.length > 2) {
-      let nameElement = data.children[1].children;
-      let children = Array.from(nameElement);
-      children.forEach((child) => {
-        if (child.classList.contains("name")) {
-          dataLocation = child.innerHTML;
-        }
-      });
-    } else if (data.children.length > 0) {
-      let children = Array.from(data.children);
-      children.forEach((child) => {
-        if (child.classList.contains("name")) {
-          dataLocation = child.innerHTML;
-        }
-      });
-    } else {
-      dataLocation = data.innerHTML;
-    }
-
-    console.log(dataLocation);
-    const allLocations = [...popularLocations, ...recommendedLocations];
-    let thisLocation = allLocations.find((x) => x.location === dataLocation);
-    addToDomDetails(thisLocation);
-
-    // // =========== add a border to selected img ============
-    const firstImg = document.querySelector(".images img");
-    firstImg.classList.add("active");
-    const backBtn = document.querySelector(".back-btn");
-
-    backBtn.addEventListener("click", () => {
-      sectionContainer.style.transform = `translateX(100%)`;
-    });
-      // ===================== IMGs ===================
-    const imageElemnts = document.querySelectorAll('.images img')
-    const bigCover = document.querySelector('.big-cover img')
-    function removeActive() {
-        imageElemnts.forEach(img => {
-            img.classList.remove('active')
-        })
-    }
-    imageElemnts.forEach(img => {
-        img.addEventListener('click', () => {
-            bigCover.src = img.src
-            removeActive()
-            img.classList.add('active')
-        })
-    })
-
-})
-
+// ===================== BOTTOM NAV ICONS ===================
+const bottomNavIcons = document.querySelectorAll("#bottom-nav-container span");
+function removeActiveBottomIcon() {
+  bottomNavIcons.forEach((icon) => {
+    icon.classList.remove("active");
+  });
+}
+bottomNavIcons.forEach((icon) => {
+  icon.addEventListener("click", () => {
+    removeActiveBottomIcon();
+    icon.classList.add("active");
+  });
 });
+
+// ===================== SEARCH ===================
+const searchInputMobile = document.getElementById(
+  "search-section-input-mobile"
+);
+const searchIcon =
+  searchInputMobile.parentElement.parentElement.querySelector("span");
+const searchInputDesktop = document.getElementById("search-section-input");
+const searchIconDesktop =
+  searchInputDesktop.parentElement.parentElement.querySelector("span");
+
+function submitFormMobile(e) {
+  e.preventDefault();
+  let value = searchInputMobile.value.trim().toLowerCase();
+  window.location.href = `search.html?input=${value}`;
+}
+searchInputMobile.parentElement.addEventListener("submit", submitFormMobile);
+searchIcon.addEventListener("click", submitFormMobile);
+
+function submitFormDesktop(e) {
+  e.preventDefault();
+  let value = searchInputDesktop.value.trim().toLowerCase();
+  window.location.href = `search.html?input=${value}`;
+}
+searchInputDesktop.parentElement.addEventListener("submit", submitFormDesktop);
+searchIconDesktop.addEventListener("click", submitFormDesktop);
 
 function addToDomDetails(place) {
   const { img, images, location, days, distance, stars, desc, price } = place;
@@ -302,44 +248,69 @@ function addToDomDetails(place) {
     <button class="book-now-btn">رزرو کن</button>
   </div>
   `;
+  // // =========== add a border to selected img ============
+  const firstImg = document.querySelector(".images img");
+  firstImg.classList.add("active");
+  const backBtn = document.querySelector(".back-btn");
 
+  backBtn.addEventListener("click", () => {
+    sectionContainer.style.transform = `translateX(100%)`;
+  });
+  // ===================== IMGs ===================
+  const imageElemnts = document.querySelectorAll(".images img");
+  const bigCover = document.querySelector(".big-cover img");
+  function removeActive() {
+    imageElemnts.forEach((img) => {
+      img.classList.remove("active");
+    });
+  }
+  imageElemnts.forEach((img) => {
+    img.addEventListener("click", () => {
+      bigCover.src = img.src;
+      removeActive();
+      img.classList.add("active");
+    });
+  });
+  const bookmarkIcon = document.querySelector(".bookmark");
+  const locationName =
+    bookmarkIcon.parentElement.querySelector(".name").innerHTML;
+
+  bookmarks.find((item) => {
+    if (item.location === locationName) {
+      bookmarkIcon.style.fontVariationSettings = `"FILL" 1, "GRAD" 0, "opsz" 24, "wght" 0`;
+    }
+  });
+  bookmarkIcon.addEventListener("click", () => {
+    const computedStyle = window.getComputedStyle(bookmarkIcon);
+  const currentFontVariationSettings = computedStyle.getPropertyValue("font-variation-settings");
+  console.log("Current Font Variation Settings:",currentFontVariationSettings);
+  console.log("Comparison String:", `"FILL" 0, "GRAD" 0, "opsz" 24, "wght" 0`);
+
+    if (
+        currentFontVariationSettings  ==
+      `"FILL" 0, "GRAD" 0, "opsz" 24, "wght" 0`
+    ) {
+      bookmarkIcon.style.fontVariationSettings = `"FILL" 1, "GRAD" 0, "opsz" 24, "wght" 0`;
+      
+
+      allLocations.find((x) => {
+        if (x.location === locationName) {
+          let duplicate = bookmarks.find(
+            (item) => item.location === x.location
+          );
+          if (duplicate !== undefined) return;
+          bookmarks.push(x);
+          localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+        }
+      });
+    }
+    if (
+        currentFontVariationSettings  ==
+      `"FILL" 1, "GRAD" 0, "opsz" 24, "wght" 0`
+    ) {
+      bookmarkIcon.style.fontVariationSettings = `"FILL" 0, "GRAD" 0, "opsz" 24, "wght" 0`;
+      bookmarks = bookmarks.filter((x) => x.location !== locationName);
+      localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+    }
+  });
 }
-
-let isDragging = false,
-startX,
-startScrollLeft;
-
-const dragStart = (e) => {
-    isDragging = true;
-    startX = e.pageX;
-    startScrollLeft = popularSection.scrollLeft;
-    popularSection.classList.add("dragging");
-  };
-  const dragging = (e) => {
-    if (!isDragging) return;
-    popularSection.scrollLeft = startScrollLeft - (e.pageX - startX);
-  };
-  const dragStop = () => {
-    setTimeout(() => {
-        isDragging = false;
-    popularSection.classList.remove("dragging");
-    }, 100);
-  };
-
-popularSection.addEventListener('mousedown', dragStart)
-popularSection.addEventListener('mouseup', dragStop)
-popularSection.addEventListener('mousemove', dragging)
-
-const sliderImages = popularSection.querySelectorAll('.popular-card')
-// sliderImages.forEach((image) => {
-//     image.addEventListener('click', (e) => {
-//         if (isDragging) {
-//             e.preventDefault(); 
-//     sectionContainer.style.transform = `translateX(100%)`;
-
-//         } else {
-//     sectionContainer.style.transform = `translateX(0)`;
-
-//         }
-//     });
-// });
