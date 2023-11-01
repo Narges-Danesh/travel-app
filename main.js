@@ -7,6 +7,8 @@ const sectionElement = document.querySelector("section");
 
 let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
 
+let bookmarkPage = false;
+
 const urlParams = new URLSearchParams(window.location.search);
 // ===================== NAV SCROLL EFFECT ==================
 addEventListener("scroll", () => {
@@ -253,9 +255,13 @@ function addToDomDetails(place) {
   firstImg.classList.add("active");
   const backBtn = document.querySelector(".back-btn");
 
-  backBtn.addEventListener("click", () => {
-    sectionContainer.style.transform = `translateX(100%)`;
+  backBtn.addEventListener("click", () => {        sectionContainer.style.transform = `translateX(100%)`;
+
+     if( bookmarkPage ) {
+    window.location.href = `bookmarks.html`
+  } 
   });
+ 
   // ===================== IMGs ===================
   const imageElemnts = document.querySelectorAll(".images img");
   const bigCover = document.querySelector(".big-cover img");

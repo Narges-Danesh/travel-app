@@ -214,7 +214,7 @@ main {
   transform: scale(60%);
 }
 /* ======== RECOMMENDED SECTION ========= */
-#recommended,  #search-cards{
+#recommended,  #search-cards, #bookmarks-section {
   display: flex;
   flex-flow: column;
   margin-bottom: 100px;
@@ -542,7 +542,7 @@ align-items: center;
   #popular-places .popular-card {
     height: 200px;
   }
-  #recommended,  #search-cards{
+  #recommended,  #search-cards, #bookmarks-section{
     display: flex;
     flex-flow: row;
     gap: 2%;

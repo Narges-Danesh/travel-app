@@ -23,7 +23,6 @@
       }
       #bookmarks-section {
         margin: 10px;
-        margin-bottom: 100px;
       }
     </style>
   </head>
@@ -128,9 +127,9 @@
       </div>
 
       <!-- bookmarks -->
-      <div id="bookmarks-section">
-        <h3>تعداد: 0</h3>
-      </div>
+      <h3>تعداد: </h3>
+
+      <div id="bookmarks-section"></div>
     </div>
 
     <!-- ======================= DETAILS CONTAINER ================ -->
@@ -141,9 +140,11 @@
     <!-- scripts -->
     <script src="main.js"></script>
     <script>
-       const header = document.getElementById("bookmarks-section");
+      bookmarkPage = true;
+
+      const header = document.querySelector("h3");
       header.innerHTML = `تعداد: ${bookmarks.length}`;
-      
+
       const bookmarksSection = document.getElementById("bookmarks-section");
       bookmarks.forEach((bookmark) => {
         const { img, location, date, days, stars } = bookmark;
@@ -168,8 +169,6 @@
       <span class="material-symbols-outlined star-icon"> star </span>
     </div>
     </div>
-
-  
     `;
       });
 
@@ -184,8 +183,6 @@
           addToDomDetails(thisLocation);
         });
       });
-
-     
     </script>
   </body>
 </html>
