@@ -531,6 +531,13 @@ section {
   #nav-big-screen .icons > * {
     margin-right: 20px;
   }
+  #nav-big-screen .icons  > *:not(:last-child):hover {
+    color: var(--main-color);
+  }
+  #nav-big-screen .icons  span.active {
+    color: var(--main-color);
+
+  }
   #current-location-desktop {
     display: flex;
     align-items: center;
