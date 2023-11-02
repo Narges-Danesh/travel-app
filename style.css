@@ -4,14 +4,14 @@
   --bg-color-darker: #121517;
   --bg-color-2: #31373e;
   --text-color: #f1f3f5;
-  --stars-bg : rgba(0, 0, 0, 0.5);
+  --stars-bg: rgba(0, 0, 0, 0.5);
 }
 .light-mode {
   --bg-color: #f1f3f5;
   --bg-color-2: #dfe3e7;
   --bg-color-darker: #dfe3e7;
   --text-color: #1b2024;
-  --stars-bg : rgba(143, 143, 143, 0.523);
+  --stars-bg: rgba(143, 143, 143, 0.523);
 }
 @font-face {
   font-family: iran-sans;
@@ -46,7 +46,7 @@ a {
   color: inherit;
 }
 span.material-symbols-outlined {
-    cursor: pointer;
+  cursor: pointer;
 }
 /* ================= NAVIGATION ================= */
 nav {
@@ -60,20 +60,18 @@ nav {
   align-items: center;
   background-color: var(--bg-color);
   padding: 10px 20px;
-  transition: all 0.3s;
 }
 #navbar.shadow {
   box-shadow: 5px 0 10px rgba(0, 0, 0, 0.5);
 }
 #navbar .left-section {
-    display: flex;
-align-items: center;
-gap: 15px;
-  }
-  .dark-mode span {
-    transform: scale(120%);
-
-  }
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.dark-mode span {
+  transform: scale(120%);
+}
 #user-profile {
   height: 10vh;
   display: flex;
@@ -214,7 +212,9 @@ main {
   transform: scale(60%);
 }
 /* ======== RECOMMENDED SECTION ========= */
-#recommended,  #search-cards, #bookmarks-section {
+#recommended,
+#search-cards,
+#bookmarks-section {
   display: flex;
   flex-flow: column;
   margin-bottom: 100px;
@@ -269,8 +269,8 @@ main {
   position: fixed;
   bottom: 20px;
   z-index: 1002;
-left: 50%;
-transform: translateX(-50%);
+  left: 50%;
+  transform: translateX(-50%);
 }
 #bottom-nav-container .bottom-nav {
   background-color: var(--bg-color-darker);
@@ -290,9 +290,8 @@ transform: translateX(-50%);
   align-items: center;
 }
 #bottom-nav-container .bottom-nav span.active {
-color: white;
-background-color: var(--main-color);
-
+  color: white;
+  background-color: var(--main-color);
 }
 /* ================= DETAILS ================= */
 #section-container {
@@ -307,8 +306,8 @@ background-color: var(--main-color);
   transition: all 0.3s;
 }
 #section-container::-webkit-scrollbar {
-    display: none;
-  }
+  display: none;
+}
 section {
   margin-bottom: 100px;
 }
@@ -451,40 +450,39 @@ section {
   scroll-snap-type: none;
 }
 
-
 /* ================= SEARCH PAGE ================= */
 #search-cards {
-    margin: 10px ;
+  margin: 10px;
 }
 /* ================= PROFILE  ================= */
 #profile-container {
-padding: 20px ;
-display: flex;
-flex-flow: column;
-align-items: center;
+  padding: 20px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 #profile-container table {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 #profile-container table td {
-    padding: 10px 20px;
+  padding: 10px 20px;
 }
 #profile-container table tr td:first-child {
-    color: grey;
+  color: grey;
 }
-#profile-container  button {
-    padding: 10px 20px;
-    border: 2px solid var(--main-color);
-    background-color: var(--main-color);
-    color: white;
-    border-radius: 5px;
-    margin-top: 30px;
-    transition:  all 0.3s;
+#profile-container button {
+  padding: 10px 20px;
+  border: 2px solid var(--main-color);
+  background-color: var(--main-color);
+  color: white;
+  border-radius: 5px;
+  margin-top: 30px;
+  transition: all 0.3s;
 }
-#profile-container  button:hover {
-    background-color: transparent;
-    color: var(--text-color);
-    border: 2px solid var(--main-color);
+#profile-container button:hover {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 2px solid var(--main-color);
 }
 /* ================= MEDIA QUERIES ================= */
 @media screen and (min-width: 800px) {
@@ -542,13 +540,15 @@ align-items: center;
   #popular-places .popular-card {
     height: 200px;
   }
-  #recommended,  #search-cards, #bookmarks-section{
+  #recommended,
+  #search-cards,
+  #bookmarks-section {
     display: flex;
     flex-flow: row;
     gap: 2%;
     flex-wrap: wrap;
   }
- .recommended-card{
+  .recommended-card {
     max-width: 49%;
   }
   /* DETAILS PAGE */

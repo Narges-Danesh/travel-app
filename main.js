@@ -150,16 +150,47 @@ const recommendedLocations = [
 const allLocations = [...popularLocations, ...recommendedLocations];
 
 // ===================== DARK MODE ===================
-const darkModeBtn = document.querySelector("#navbar   .dark-mode span");
 
-darkModeBtn.addEventListener("click", () => {
+const darkModeDesktopBtn = document.querySelector(".icons .dark-mode span");
+const darkModeMobileBtn = document.querySelector(
+  ".left-section .dark-mode span"
+);
+
+// Get from local storage
+let userSelectedMode = JSON.parse(localStorage.getItem("lightMode"));
+if (userSelectedMode) {
+  document.body.classList.add("light-mode");
+  darkModeDesktopBtn.innerHTML = "light_mode";
+
+  darkModeMobileBtn.innerHTML = "light_mode";
+} else {
+  document.body.classList.remove("light-mode");
+  darkModeDesktopBtn.innerHTML = "clear_night";
+  darkModeMobileBtn.innerHTML = "clear_night";
+}
+if (window.innerWidth > 800) {
+  darkModeMobileBtn.style.display = "none";
+}
+
+let lightModeOn = userSelectedMode || false;
+
+function darkMode() {
+  lightModeOn = lightModeOn === true ? false : true;
+  localStorage.setItem("lightMode", lightModeOn);
+
   document.body.classList.toggle("light-mode");
   if (document.body.classList.contains("light-mode")) {
-    darkModeBtn.innerHTML = "light_mode";
+    darkModeDesktopBtn.innerHTML = "light_mode";
+    darkModeMobileBtn.innerHTML = "light_mode";
   } else {
-    darkModeBtn.innerHTML = "clear_night";
+    darkModeDesktopBtn.innerHTML = "clear_night";
+    darkModeMobileBtn.innerHTML = "clear_night";
   }
-});
+  console.log(this, lightModeOn);
+}
+darkModeDesktopBtn.addEventListener("click", darkMode);
+darkModeMobileBtn.addEventListener("click", darkMode);
+
 
 // ===================== BOTTOM NAV ICONS ===================
 const bottomNavIcons = document.querySelectorAll("#bottom-nav-container span");
@@ -176,30 +207,37 @@ bottomNavIcons.forEach((icon) => {
 });
 
 // ===================== SEARCH ===================
-const searchInputMobile = document.getElementById(
-  "search-section-input-mobile"
-);
-const searchIcon =
-  searchInputMobile.parentElement.parentElement.querySelector("span");
-const searchInputDesktop = document.getElementById("search-section-input");
-const searchIconDesktop =
-  searchInputDesktop.parentElement.parentElement.querySelector("span");
 
-function submitFormMobile(e) {
-  e.preventDefault();
-  let value = searchInputMobile.value.trim().toLowerCase();
-  window.location.href = `search.html?input=${value}`;
-}
-searchInputMobile.parentElement.addEventListener("submit", submitFormMobile);
-searchIcon.addEventListener("click", submitFormMobile);
+let profilePage = false;
+if (profilePage) {
+  const searchInputMobile = document.getElementById(
+    "search-section-input-mobile"
+  );
+  const searchIcon =
+    searchInputMobile.parentElement.parentElement.querySelector("span");
+  const searchInputDesktop = document.getElementById("search-section-input");
+  const searchIconDesktop =
+    searchInputDesktop.parentElement.parentElement.querySelector("span");
 
-function submitFormDesktop(e) {
-  e.preventDefault();
-  let value = searchInputDesktop.value.trim().toLowerCase();
-  window.location.href = `search.html?input=${value}`;
+  function submitFormMobile(e) {
+    e.preventDefault();
+    let value = searchInputMobile.value.trim().toLowerCase();
+    window.location.href = `search.html?input=${value}`;
+  }
+  searchInputMobile.parentElement.addEventListener("submit", submitFormMobile);
+  searchIcon.addEventListener("click", submitFormMobile);
+
+  function submitFormDesktop(e) {
+    e.preventDefault();
+    let value = searchInputDesktop.value.trim().toLowerCase();
+    window.location.href = `search.html?input=${value}`;
+  }
+  searchInputDesktop.parentElement.addEventListener(
+    "submit",
+    submitFormDesktop
+  );
+  searchIconDesktop.addEventListener("click", submitFormDesktop);
 }
-searchInputDesktop.parentElement.addEventListener("submit", submitFormDesktop);
-searchIconDesktop.addEventListener("click", submitFormDesktop);
 
 function addToDomDetails(place) {
   const { img, images, location, days, distance, stars, desc, price } = place;
@@ -255,13 +293,14 @@ function addToDomDetails(place) {
   firstImg.classList.add("active");
   const backBtn = document.querySelector(".back-btn");
 
-  backBtn.addEventListener("click", () => {        sectionContainer.style.transform = `translateX(100%)`;
+  backBtn.addEventListener("click", () => {
+    sectionContainer.style.transform = `translateX(100%)`;
 
-     if( bookmarkPage ) {
-    window.location.href = `bookmarks.html`
-  } 
+    if (bookmarkPage) {
+      window.location.href = `bookmarks.html`;
+    }
   });
- 
+
   // ===================== IMGs ===================
   const imageElemnts = document.querySelectorAll(".images img");
   const bigCover = document.querySelector(".big-cover img");
@@ -288,16 +327,22 @@ function addToDomDetails(place) {
   });
   bookmarkIcon.addEventListener("click", () => {
     const computedStyle = window.getComputedStyle(bookmarkIcon);
-  const currentFontVariationSettings = computedStyle.getPropertyValue("font-variation-settings");
-  console.log("Current Font Variation Settings:",currentFontVariationSettings);
-  console.log("Comparison String:", `"FILL" 0, "GRAD" 0, "opsz" 24, "wght" 0`);
+    const currentFontVariationSettings = computedStyle.getPropertyValue(
+      "font-variation-settings"
+    );
+    console.log(
+      "Current Font Variation Settings:",
+      currentFontVariationSettings
+    );
+    console.log(
+      "Comparison String:",
+      `"FILL" 0, "GRAD" 0, "opsz" 24, "wght" 0`
+    );
 
     if (
-        currentFontVariationSettings  ==
-      `"FILL" 0, "GRAD" 0, "opsz" 24, "wght" 0`
+      currentFontVariationSettings == `"FILL" 0, "GRAD" 0, "opsz" 24, "wght" 0`
     ) {
       bookmarkIcon.style.fontVariationSettings = `"FILL" 1, "GRAD" 0, "opsz" 24, "wght" 0`;
-      
 
       allLocations.find((x) => {
         if (x.location === locationName) {
@@ -311,8 +356,7 @@ function addToDomDetails(place) {
       });
     }
     if (
-        currentFontVariationSettings  ==
-      `"FILL" 1, "GRAD" 0, "opsz" 24, "wght" 0`
+      currentFontVariationSettings == `"FILL" 1, "GRAD" 0, "opsz" 24, "wght" 0`
     ) {
       bookmarkIcon.style.fontVariationSettings = `"FILL" 0, "GRAD" 0, "opsz" 24, "wght" 0`;
       bookmarks = bookmarks.filter((x) => x.location !== locationName);
