@@ -208,8 +208,8 @@ bottomNavIcons.forEach((icon) => {
 
 // ===================== SEARCH ===================
 
-let profilePage = false;
-if (profilePage) {
+let notProfilePage = true;
+if (notProfilePage) {
   const searchInputMobile = document.getElementById(
     "search-section-input-mobile"
   );
